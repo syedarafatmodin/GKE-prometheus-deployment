@@ -23,14 +23,19 @@ This project demonstrates a cloud-native deployment pipeline on Google Kubernete
 * `Dockerfile`: Multi-stage build for containerizing the Go app.
 * `pod-monitoring.yaml`: Custom resource definition for Prometheus scraping.
 
+## Project Structure
+
+The repository is organized into application source code and Kubernetes manifests:
+
+```text
 gke-prometheus-deployment/
 ├── app/
-│   ├── Dockerfile
-│   ├── main.go
-│   └── go.mod (if you have one)
+│   ├── Dockerfile          # Multi-stage build for Go application
+│   ├── main.go             # Source code for the hello-web server
+│   └── go.mod              # Go module definition
 ├── k8s/
-│   ├── deployment.yaml
-│   ├── service.yaml
-│   ├── pod-monitoring.yaml
-│   └── prometheus-app.yaml
-└── README.md
+│   ├── deployment.yaml     # Main GKE deployment configuration
+│   ├── service.yaml        # LoadBalancer service definition
+│   ├── pod-monitoring.yaml # Custom resource for Prometheus scraping
+│   └── prometheus-app.yaml # Sidecar/Exporter configuration
+└── README.md               # Project documentation
