@@ -22,3 +22,15 @@ This project demonstrates a cloud-native deployment pipeline on Google Kubernete
 * `main.go`: Sample Go application serving HTTP requests.
 * `Dockerfile`: Multi-stage build for containerizing the Go app.
 * `pod-monitoring.yaml`: Custom resource definition for Prometheus scraping.
+
+gke-prometheus-deployment/
+├── app/
+│   ├── Dockerfile
+│   ├── main.go
+│   └── go.mod (if you have one)
+├── k8s/
+│   ├── deployment.yaml
+│   ├── service.yaml
+│   ├── pod-monitoring.yaml
+│   └── prometheus-app.yaml
+└── README.md
