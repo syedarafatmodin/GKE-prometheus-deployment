@@ -1,28 +1,24 @@
-# Hello Application example
+# GKE Deployment & Monitoring Demo
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://ssh.cloud.google.com/cloudshell/editor?cloudshell_git_repo=https://github.com/GoogleCloudPlatform/kubernetes-engine-samples&cloudshell_tutorial=cloudshell/tutorial.md&cloudshell_workspace=hello-app)
+## Overview
+This project demonstrates a cloud-native deployment pipeline on Google Kubernetes Engine (GKE). It features a containerized Go application with integrated monitoring, autoscaling, and error alerting.
 
-This example shows how to build and deploy a containerized Go web server
-application using [Kubernetes](https://kubernetes.io).
+## Tech Stack
+* **Cloud:** Google Cloud Platform (GCP)
+* **Orchestrator:** Google Kubernetes Engine (GKE) (Standard Cluster)
+* **Containerization:** Docker & Artifact Registry
+* **Monitoring:** Managed Service for Prometheus
+* **IaC/Config:** Kubernetes Manifests (YAML)
 
-Visit https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app
-to follow the tutorial and deploy this application on [Google Kubernetes
-Engine](https://cloud.google.com/kubernetes-engine).
+## Key Features Implemented
+* **Cluster Configuration:** Deployed a regional GKE cluster with Node Autoscaling enabled.
+* **Observability:** Integrated Managed Prometheus for scraping custom pod metrics.
+* **Alerting:** Configured Cloud Monitoring alerts for specific log-based errors (`InvalidImageName`).
+* **Deployment Strategy:** Performed rolling updates to transition from v1 to v2 of the application without downtime.
+* **Load Balancing:** Exposed the application via an External Load Balancer.
 
-This directory contains:
-
-- `main.go` contains the HTTP server implementation. It responds to all HTTP
-  requests with a  `Hello, world!` response.
-- `Dockerfile` is used to build the Docker image for the application.
-
-This application is available as two Docker images, which respond to requests
-with different version numbers:
-
-- `us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0`
-- `us-docker.pkg.dev/google-samples/containers/gke/hello-app:2.0`
-
-This example is used in many official/unofficial tutorials, some of them
-include:
-- [Kubernetes Engine Quickstart](https://cloud.google.com/kubernetes-engine/docs/quickstart)
-- [Kubernetes Engine - Deploying a containerized web application](https://cloud.google.com/kubernetes-engine/docs/tutorials/hello-app) tutorial
-- [Kubernetes Engine - Setting up HTTP Load Balancing](https://cloud.google.com/kubernetes-engine/docs/tutorials/http-balancer) tutorial
+## Project Structure
+* `manifests/`: Kubernetes deployment and service configurations.
+* `main.go`: Sample Go application serving HTTP requests.
+* `Dockerfile`: Multi-stage build for containerizing the Go app.
+* `pod-monitoring.yaml`: Custom resource definition for Prometheus scraping.
